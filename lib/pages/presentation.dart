@@ -1,9 +1,19 @@
-import 'package:app_smart_planning/pages/profile.dart';
+import 'package:app_smart_planning/pages/login.dart';
 import 'package:app_smart_planning/tools/new_page.dart';
 import 'package:flutter/material.dart';
 
 class PresentationPageScreen extends NewPageScreen {
-  PresentationPageScreen(String text) : super(text);
+  PresentationPageScreen(String text) : super(text: text);
+
+  @override
+  _PresentationPageScreenState createState() => _PresentationPageScreenState();
+}
+
+class _PresentationPageScreenState extends State<PresentationPageScreen> {
+  late Map<String, String> jsonResponse = {
+    'name': '',
+    'url': 'https://miro.medium.com/max/2000/1*01_WPVk9W2KVJI2DWTn4rg.png'
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +23,12 @@ class PresentationPageScreen extends NewPageScreen {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CircleAvatar(
-              backgroundImage: NetworkImage(
-                "https://lh3.googleusercontent.com/proxy/_VG1_m-m9TCY6OsLvNJFbPYJEum4MY2zpLJ6VUsbtOUQPvle2d0fgICjJfNCusxirMGhLEJNScBls6i3E_YR9sB7FVgs8RFbbyX6jCQWYv-d9zWX9MHTmjMA9_SQ5CvoWVy2xxl3hcLovdQh4aYgaiCDhIv1hJw",
-              ),
+              backgroundImage: AssetImage('assets/images/logo.jpeg'),
               radius: 120.0,
             ),
             const SizedBox(height: 15),
             Text(
-              "Smart Planning",
+              "Ser Ativo",
               style: TextStyle(
                 fontSize: 22.0,
                 color: Colors.redAccent,
@@ -28,15 +36,10 @@ class PresentationPageScreen extends NewPageScreen {
             ),
             const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () {},
-              child: const Text('Criar Conta'),
-            ),
-            const SizedBox(height: 15),
-            ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfilePageScreen('text')),
+                  MaterialPageRoute(builder: (context) => LoginPageScreen()),
                 );
               },
               child: const Text('Entrar'),
@@ -45,5 +48,10 @@ class PresentationPageScreen extends NewPageScreen {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 }
